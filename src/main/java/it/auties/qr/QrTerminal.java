@@ -8,13 +8,13 @@ import java.util.Objects;
  * Utility class to print qr codes to the terminal
  */
 public class QrTerminal {
-    private static final String WW = "█";
-    private static final String BB = " ";
-    private static final String WB = "▀";
-    private static final String BW = "▄";
-    private static final int QZ = 2;
-    public static final String BLACK = "\\e[40m";
-    public static final String WHITE = "\\e[47m";
+    private static final String WHITE_WHITE = "█";
+    private static final String BLACK_BLACK = " ";
+    private static final String WHITE_BLACK = "▀";
+    private static final String BLACK_WHITE = "▄";
+    private static final int QUIET_ZONE = 2;
+    public static final String BLACK = "\033[40m  \033[0m";
+    public static final String WHITE = "\033[47m  \033[0m";
 
     /**
      * Prints a qr code to the terminal
@@ -33,36 +33,36 @@ public class QrTerminal {
      * @param small boolean - whether to print the QR code in a small format
      * @return string
      */
-    private static String toString(BitMatrix matrix, boolean small) {
+    public static String toString(BitMatrix matrix, boolean small) {
         Objects.requireNonNull(matrix, "Missing argument: matrix");
         return small ? toSmallString(matrix) : toBigString(matrix);
     }
 
     private static String toSmallString(BitMatrix matrix) {
         var writer = new StringBuilder();
-        var header = WW.repeat(matrix.getWidth() + QZ * QZ);
+        var header = WHITE_WHITE.repeat(matrix.getWidth() + QUIET_ZONE * QUIET_ZONE);
         writer.append((header + "\n").repeat(1));
-        for (var i = 0; i <= matrix.getWidth(); i += QZ) {
-            writer.append(WW.repeat(QZ));
+        for (var i = 0; i < matrix.getWidth(); i += QUIET_ZONE) {
+            writer.append(WHITE_WHITE.repeat(QUIET_ZONE));
             for (var j = 0; j <= matrix.getWidth(); j++) {
                 var nextBlack = i + 1 < matrix.getWidth() && matrix.get(j, i + 1);
                 var currentBlack = matrix.get(j, i);
                 if (currentBlack && nextBlack) {
-                    writer.append(BB);
+                    writer.append(BLACK_BLACK);
                 } else if (currentBlack) {
-                    writer.append(BW);
+                    writer.append(BLACK_WHITE);
                 } else if (!nextBlack) {
-                    writer.append(WW);
+                    writer.append(WHITE_WHITE);
                 } else {
-                    writer.append(WB);
+                    writer.append(WHITE_BLACK);
                 }
             }
 
-            writer.append(WW.repeat(QZ - 1));
+            writer.append(WHITE_WHITE.repeat(QUIET_ZONE - 1));
             writer.append("\n");
         }
 
-        writer.append(WB.repeat(matrix.getWidth() + QZ * QZ));
+        writer.append(WHITE_BLACK.repeat(matrix.getWidth() + QUIET_ZONE * QUIET_ZONE));
         writer.append("\n");
         return writer.toString();
     }
