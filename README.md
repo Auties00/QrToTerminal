@@ -15,7 +15,7 @@ Inspired by [this thread](https://superuser.com/a/1420015).
 <dependency>
     <groupId>com.github.auties00</groupId>
     <artifactId>qr-terminal</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 </dependency>
 ```
 
@@ -23,12 +23,12 @@ Inspired by [this thread](https://superuser.com/a/1420015).
 
 1. Groovy DSL
    ```groovy
-   implementation 'com.github.auties00:qr-terminal:1.0'
+   implementation 'com.github.auties00:qr-terminal:1.1'
    ```
 
 2. Kotlin DSL
    ```kotlin
-   implementation("com.github.auties00:qr-terminal:1.0")
+   implementation("com.github.auties00:qr-terminal:1.1")
    ```
 
 ### How to use
