@@ -17,7 +17,7 @@ public class QrTest {
         var writer = new MultiFormatWriter();
         var data = new byte[128];
         ThreadLocalRandom.current().nextBytes(data);
-        var qrCode = writer.encode(Base64.getEncoder().encodeToString(data), BarcodeFormat.QR_CODE, 1, 1);
+        var qrCode = writer.encode(Base64.getEncoder().encodeToString(data), BarcodeFormat.QR_CODE, 33, 33);
         QrTerminal.print(qrCode, false);
         QrTerminal.print(qrCode, true);
     }

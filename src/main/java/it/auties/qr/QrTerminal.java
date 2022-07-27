@@ -42,7 +42,7 @@ public class QrTerminal {
         var writer = new StringBuilder();
         var header = WHITE_WHITE.repeat(matrix.getWidth() + QUIET_ZONE * QUIET_ZONE);
         writer.append((header + "\n").repeat(1));
-        for (var i = 0; i < matrix.getWidth(); i += QUIET_ZONE) {
+        for (var i = 0; i <= matrix.getWidth(); i += QUIET_ZONE) {
             writer.append(WHITE_WHITE.repeat(QUIET_ZONE));
             for (var j = 0; j <= matrix.getWidth(); j++) {
                 var nextBlack = i + 1 < matrix.getWidth() && matrix.get(j, i + 1);
