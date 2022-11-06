@@ -40,8 +40,10 @@ public class QrTerminal {
 
     private static String toSmallString(BitMatrix matrix) {
         var writer = new StringBuilder();
-        var header = WHITE_WHITE.repeat(matrix.getWidth() + QUIET_ZONE * QUIET_ZONE);
-        writer.append((header + "\n").repeat(1));
+
+        var header = WHITE_WHITE.repeat(matrix.getWidth() + QUIET_ZONE * 2);
+        writer.append((header + "\n").repeat(QUIET_ZONE / 2));
+
         for (var i = 0; i <= matrix.getWidth(); i += QUIET_ZONE) {
             writer.append(WHITE_WHITE.repeat(QUIET_ZONE));
             for (var j = 0; j <= matrix.getWidth(); j++) {
@@ -62,7 +64,8 @@ public class QrTerminal {
             writer.append("\n");
         }
 
-        writer.append(WHITE_BLACK.repeat(matrix.getWidth() + QUIET_ZONE * QUIET_ZONE));
+        var trailing = WHITE_BLACK.repeat(matrix.getWidth() + QUIET_ZONE * 2);
+        writer.append(trailing.repeat(QUIET_ZONE / 2 - 1));
         writer.append("\n");
         return writer.toString();
     }
