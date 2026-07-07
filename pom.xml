@@ -6,7 +6,7 @@
 
     <groupId>com.github.auties00</groupId>
     <artifactId>qr-terminal</artifactId>
-    <version>2.2</version>
+    <version>3.0</version>
     <name>QrToTerminal</name>
     <description>Prints a qr code generated from zxing to the terminal</description>
     <url>https://github.com/Auties00/QrToTerminal</url>
@@ -77,8 +77,8 @@
     </profiles>
 
     <properties>
-        <java.version>11</java.version>
-        <compiler.plugin.version>3.8.1</compiler.plugin.version>
+        <java.version>21</java.version>
+        <compiler.plugin.version>3.13.0</compiler.plugin.version>
         <deploy.plugin.version>2.8.2</deploy.plugin.version>
         <gpg.plugin.version>1.6</gpg.plugin.version>
         <source.plugin.version>3.0.1</source.plugin.version>

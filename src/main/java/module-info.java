@@ -1,6 +1,6 @@
-module it.auties.qr {
+module com.github.auties00.qr {
     requires com.google.zxing;
     requires com.google.zxing.javase;
 
-    exports it.auties.qr;
+    exports com.github.auties00.qr;
 }
